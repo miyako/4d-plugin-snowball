@@ -1,6 +1,12 @@
 # 4d-plugin-snowball
 4D implementation of [Snowball: A language for stemming algorithms](http://snowball.tartarus.org)
 
+##Platform
+
+| carbon | cocoa | win32 | win64 |
+|:------:|:-----:|:---------:|:---------:|
+|🆗|🆗|🆗|🆗|
+
 Example
 ---
 ```

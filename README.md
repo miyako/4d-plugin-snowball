@@ -42,7 +42,15 @@ $text:="Le français est une langue indo-européenne de la famille des langues r
   //your responsibility to clean the text
 $text:=Lowercase(Replace string($text;".";"";*);*)
 
-Snowball ($text;$words;$stems;Snowball French)
+Snowball ($text;$words_json;$stems_json;Snowball French)
+
+C_COLLECTION($words;$stems)
+
+$words:=JSON Parse($words_json)
+$stems:=JSON Parse($stems_json)
+
+ALERT(String($words.length))
+ALERT(String($stems.length))
 ```
 
 #### Supported languages:

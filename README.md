@@ -17,7 +17,7 @@
 
 ![preemption xx](https://user-images.githubusercontent.com/1725068/41327179-4e839948-6efd-11e8-982b-a670d511e04f.png)
 
-**Compatibility break** changes params from array to text (json collection)
+**Compatibility break** changed output params from array to text (json collection). previous version available in ``array`` branch
 
 ## Syntax
 

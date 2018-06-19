@@ -22,7 +22,7 @@ $text:=Lowercase(Replace string($text;".";"";*);*)
 Snowball ($text;$words;$stems;Snowball_French)
 ```
 
-###Supported languages:
+#### Supported languages:
 
 * Snowball_Danish 0
 * Snowball_Dutch 1

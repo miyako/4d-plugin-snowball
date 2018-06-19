@@ -35,7 +35,6 @@ stems|TEXT|``JSON`` array (out)
 lang|LONGINT|see constants
 status|LONGINT|
 
-
 ### Examples
 
 ```
@@ -54,6 +53,8 @@ $stems:=JSON Parse($stems_json)
 ALERT(String($words.length))
 ALERT(String($stems.length))
 ```
+
+<img width="451" alt="2018-06-19 10 30 48" src="https://user-images.githubusercontent.com/1725068/41570938-dd305a2a-73ab-11e8-813a-074f7ffd451e.png">
 
 #### Supported languages:
 

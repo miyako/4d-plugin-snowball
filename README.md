@@ -19,7 +19,7 @@
 
 **Compatibility break** 
 
-changed output params from array to text (json collection). previous version available in ]``array``](https://github.com/miyako/4d-plugin-snowball/tree/array) branch
+changed output params from array to text (json collection). previous version available in [``array``](https://github.com/miyako/4d-plugin-snowball/tree/array) branch
 
 ## Syntax
 

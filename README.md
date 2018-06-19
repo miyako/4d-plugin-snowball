@@ -17,7 +17,9 @@
 
 ![preemption xx](https://user-images.githubusercontent.com/1725068/41327179-4e839948-6efd-11e8-982b-a670d511e04f.png)
 
-**Compatibility break** changed output params from array to text (json collection). previous version available in ``array`` branch
+**Compatibility break** 
+
+changed output params from array to text (json collection). previous version available in [``array``](https://github.com/miyako/4d-plugin-snowball/tree/array) branch
 
 ## Syntax
 
@@ -33,7 +35,6 @@ stems|TEXT|``JSON`` array (out)
 lang|LONGINT|see constants
 status|LONGINT|
 
-
 ### Examples
 
 ```
@@ -42,8 +43,18 @@ $text:="Le français est une langue indo-européenne de la famille des langues r
   //your responsibility to clean the text
 $text:=Lowercase(Replace string($text;".";"";*);*)
 
-Snowball ($text;$words;$stems;Snowball French)
+Snowball ($text;$words_json;$stems_json;Snowball French)
+
+C_COLLECTION($words;$stems)
+
+$words:=JSON Parse($words_json)
+$stems:=JSON Parse($stems_json)
+
+ALERT(String($words.length))
+ALERT(String($stems.length))
 ```
+
+<img width="451" alt="2018-06-19 10 30 48" src="https://user-images.githubusercontent.com/1725068/41570938-dd305a2a-73ab-11e8-813a-074f7ffd451e.png">
 
 #### Supported languages:
 

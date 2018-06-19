@@ -53,8 +53,12 @@ std::vector<std::string> split(const std::string &str){
 void Snowball(sLONG_PTR *pResult, PackagePtr pParams)
 {
 				C_TEXT Param1;
-				ARRAY_TEXT Param2;
-				ARRAY_TEXT Param3;
+				C_TEXT Param2;
+				C_TEXT Param3;
+//				ARRAY_TEXT Param2;
+//				ARRAY_TEXT Param3;
+	JSONNODE *Param2j = json_new(JSON_ARRAY);
+	JSONNODE *Param3j = json_new(JSON_ARRAY);
 				C_LONGINT Param4;
 
 				Param1.fromParamAtIndex(pParams, 1);
@@ -124,29 +128,37 @@ void Snowball(sLONG_PTR *pResult, PackagePtr pParams)
 
 				stemmer = sb_stemmer_new(language, charenc);
 
-				if (stemmer)
-				{
-								Param2.setSize(1);
-								Param3.setSize(1);
-
-								for(std::vector<std::string>::iterator it = words.begin(); it != words.end(); ++it) {
-												std::string word = *it;
-												sb_symbol * symbol = (sb_symbol *)word.c_str();
-												int size = word.length();
-												const sb_symbol *stemmed = sb_stemmer_stem(stemmer, symbol, size);
-												if (stemmed)
-												{
-																CUTF8String w((const uint8_t *)symbol);
-																CUTF8String s((const uint8_t *)stemmed);
-																Param2.appendUTF8String(&w);
-																Param3.appendUTF8String(&s);
-												}
-								}
-								
-								sb_stemmer_delete(stemmer);
-				}
-
-					Param2.toParamAtIndex(pParams, 2);
-					Param3.toParamAtIndex(pParams, 3);
+	if (stemmer)
+	{
+//		Param2.setSize(1);
+//		Param3.setSize(1);
+		
+		for(std::vector<std::string>::iterator it = words.begin(); it != words.end(); ++it) {
+			std::string word = *it;
+			sb_symbol * symbol = (sb_symbol *)word.c_str();
+			size_t size = word.length();
+			const sb_symbol *stemmed = sb_stemmer_stem(stemmer, symbol, size);
+			if (stemmed)
+			{
+				CUTF8String w((const uint8_t *)symbol);
+				CUTF8String s((const uint8_t *)stemmed);
+				
+				json_push_back_s(Param2j, &w);
+				json_push_back_s(Param3j, &s);
+//				Param2.appendUTF8String(&w);
+//				Param3.appendUTF8String(&s);
+			}
+		}
+		
+		sb_stemmer_delete(stemmer);
+	}
+	
+	json_stringify(Param2j, Param2);
+	json_delete(Param2j);
+	json_stringify(Param3j, Param3);
+	json_delete(Param3j);
+	
+	Param2.toParamAtIndex(pParams, 2);
+	Param3.toParamAtIndex(pParams, 3);
 }
 

@@ -18,6 +18,8 @@
 #include <iterator>
 
 #include "libstemmer.h"
+#include "libjson.h"
+#include "libjson_methods.h"
 
 // --- Snowball
 void Snowball(sLONG_PTR *pResult, PackagePtr pParams);
